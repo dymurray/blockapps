@@ -127,7 +127,7 @@ items:
           - name: postgres_user
             value: postgres
           - name: stratourl
-            value: http://starto/strato-api/eth/v1.2
+            value: http://strato/strato-api/eth/v1.2
           - name: zookeeper_conn
             value: zookeeper:2181
           image: 172.30.1.1:5000/strato/blockapps-silo-cirrus:latest
@@ -507,7 +507,7 @@ items:
           - name: STRATO_DOC_URL
           - name: STRATO_GS_MODE
           - name: STRATO_URL
-            value: http://starto/strato-api/eth/v1.2
+            value: http://strato/strato-api/eth/v1.2
           - name: APEX_URL
             value: http://apex/apex-api
           image: 172.30.1.1:5000/strato/blockapps-silo-smd-ui:latest
@@ -703,6 +703,16 @@ items:
       deploymentconfig: nginx
   status:
     loadBalancer: {}
+- apiVersion: v1
+  kind: Route
+  metadata:
+    name: nginx-80
+  spec:
+    to:
+      kind: Service
+      name: nginx
+    port:
+      targetPort: 80
 - apiVersion: v1
   kind: Service
   metadata:
